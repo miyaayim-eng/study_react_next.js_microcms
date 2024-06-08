@@ -28,7 +28,6 @@ export async function generateMetadata({ searchParams }) {
 
   // 下書きのプレビューページではインデックス無効
   if (searchParams.dk) {
-    const metadata = {};
     metadata.robots = {
       index: false,
     };
