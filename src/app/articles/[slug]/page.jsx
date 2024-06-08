@@ -23,6 +23,17 @@ export async function generateStaticParams() {
   return [...paths];
 }
 
+export async function generateMetadata({ searchParams }) {
+  // 下書きのプレビューページではインデックス無効
+  if (searchParams.dk) {
+    metadata.robots = {
+      index: false,
+    };
+    return metadata;
+  }
+  return;
+}
+
 export default async function Page({ params, searchParams }) {
   // URLパラメータのIDを参照して、ブログの詳細を取得
   // const queries = { draftKey: searchParams.dk };
