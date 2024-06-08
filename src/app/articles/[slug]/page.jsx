@@ -23,9 +23,11 @@ export async function generateStaticParams() {
   return [...paths];
 }
 
-export default async function Page({ params }) {
+// `searchParams` と `draftKey: searchParams.dk` を追加
+export default async function Page({ params, searchParams }) {
   // URLパラメータのIDを参照して、ブログの詳細を取得
-  const article = await getArticlesDetail(params.slug);
+  const queries = { draftKey: searchParams.dk };
+  const article = await getArticlesDetail(params.slug, queries);
   return (
     <main className={styles.main}>
       <div className={styles.article}>
