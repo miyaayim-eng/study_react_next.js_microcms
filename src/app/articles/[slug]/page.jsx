@@ -36,11 +36,8 @@ export async function generateMetadata({ searchParams }) {
 
 export default async function Page({ params, searchParams }) {
   // URLパラメータのIDを参照して、ブログの詳細を取得
-  // const queries = { draftKey: searchParams.dk };
-  // const article = await getArticlesDetail(params.slug, queries);
-  const article = await getArticlesDetail(params.slug, {
-    draftKey: searchParams.dk,
-  });
+  const queries = { draftKey: searchParams.dk };
+  const article = await getArticlesDetail(params.slug, queries);
   return (
     <main className={styles.main}>
       <div className={styles.article}>
