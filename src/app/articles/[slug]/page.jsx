@@ -24,14 +24,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ searchParams }) {
+  const metadata = {};
+
   // 下書きのプレビューページではインデックス無効
   if (searchParams.dk) {
+    const metadata = {};
     metadata.robots = {
       index: false,
     };
-    return metadata;
   }
-  return;
+  return metadata;
 }
 
 export default async function Page({ params, searchParams }) {
